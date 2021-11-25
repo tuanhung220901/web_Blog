@@ -2,11 +2,16 @@ from django.shortcuts import render, redirect
 from .models import PostModel
 from .forms import PostModelForm, PostUpdateForm, CommentForm
 from django.contrib.auth.decorators import login_required
-
+from django.http import HttpResponse
 
 # Create your views here.
 
 @login_required
+def hung(request):
+    respone = HttpResponse()
+    request.write("hihi")
+    return respone
+
 def index(request):
     posts = PostModel.objects.all()
     if request.method == 'POST':
